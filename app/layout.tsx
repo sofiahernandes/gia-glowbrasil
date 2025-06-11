@@ -27,7 +27,8 @@ export default function RootLayout({
     <html lang="pt-BR" className={`${inter.variable} theme-light`}>
       <body className={`${inter.className} antialiased`}>
         <ThemeProvider>
-          <PasswordProtection>{children}</PasswordProtection>
+          {/*<PasswordProtection>{children}</PasswordProtection>*/}
+          {children}
         </ThemeProvider>
       </body>
     </html>

@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { Brain, Target, Zap } from "lucide-react"
-import { ThemeSelector } from "./components/theme-selector"
+import { ThemeSelector, currentTheme } from "./components/theme-selector"
 import dynamic from "next/dynamic";
 
 const FullPageChat = dynamic(
@@ -10,9 +10,14 @@ const FullPageChat = dynamic(
   { ssr: false }
 );
 
+let bgColorChat = "#ffffff";
+if (currentTheme.id == "dark") {
+  bgColorChat = "#26354d"
+}
+
 export default function GiaAssistant() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-theme-gradient-from via-theme-background to-theme-gradient-to">
+    <div className="min-h-screen bg-theme-accent">
       {/* Header Section */}
       <div className="relative z-10 bg-theme-header-bg backdrop-blur-sm border-b border-theme-header-border">
         <div className="max-w-4xl mx-auto px-4 py-5 sm:px-6 lg:px-8">
@@ -52,7 +57,7 @@ export default function GiaAssistant() {
       </div>
 
       {/* Chat Container */}
-      <div className="relative pt-10">
+      <div className="relative pt-10 pb-40">
         {/* Chat Interface */}
         <div className="relative z-10 h-[calc(100vh-280px)] min-h-[500px]">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -60,6 +65,24 @@ export default function GiaAssistant() {
               <FullPageChat
                   chatflowid="e945adfd-2c50-42c5-8cc3-04cb4f978837"
                   apiHost="https://cloud.flowiseai.com"
+                  theme={{
+                    chatWindow: {
+                      showTitle: false,
+                      welcomeMessage: 'Olá, sou a Gia! Como posso te ajudar hoje?',
+                      backgroundColor: {bgColorChat},
+                      clearChatOnReload: false,
+                      starterPrompts: [
+                        "Me ajude a criar uma rotina diária",
+                        "Resuma o livro 'Hábitos Atômicos'",
+                        "Me dê dicas para ter mais foco"
+                      ],
+                      footer: {
+                        text: 'Created by',
+                        company: 'Sofia Botechia',
+                        companyLink: 'https://www.instagram.com/sofiabotechia/'
+                      }
+                    },
+                  }}
               />
             </div>
           </div>

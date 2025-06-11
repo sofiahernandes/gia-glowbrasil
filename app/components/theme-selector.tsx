@@ -6,6 +6,8 @@ import { Palette, Moon, Sun, Check, ChevronDown } from "lucide-react"
 
 type ThemeType = "light" | "dark" | "blue" | "purple" | "green"
 
+let currentTheme = {};
+
 export function ThemeSelector() {
   const { theme, setTheme } = useTheme()
   const [isOpen, setIsOpen] = useState(false)
@@ -19,7 +21,7 @@ export function ThemeSelector() {
     { id: "green", name: "Verde", icon: Palette },
   ]
 
-  const currentTheme = themes.find((t) => t.id === theme) || themes[0]
+  currentTheme = themes.find((t) => t.id === theme) || themes[0]
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -72,3 +74,5 @@ export function ThemeSelector() {
     </div>
   )
 }
+
+export { currentTheme };
