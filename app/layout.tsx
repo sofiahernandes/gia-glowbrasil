@@ -16,8 +16,6 @@ export const metadata: Metadata = {
   description: "Sua guia para foco, disciplina e resultados consistentes",
   keywords: ["produtividade", "disciplina", "foco", "assistente virtual"],
   authors: [{ name: "Gia Assistant" }],
-  viewport: "width=device-width, initial-scale=1",
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({
