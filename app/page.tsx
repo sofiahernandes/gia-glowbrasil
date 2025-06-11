@@ -1,9 +1,14 @@
 "use client"
 
 import type React from "react"
-import { FullPageChat } from "flowise-embed-react"
 import { Brain, Target, Zap } from "lucide-react"
 import { ThemeSelector } from "./components/theme-selector"
+import dynamic from "next/dynamic";
+
+const FullPageChat = dynamic(
+  () => import("flowise-embed-react").then(mod => mod.FullPageChat),
+  { ssr: false }
+);
 
 export default function GiaAssistant() {
   return (
